@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGLUX BOUTIQUE | Détails Produit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1f2e;
+            --secondary: #f8a01d;
+            --accent: #3a86ff;
+            --light: #f5f7fa;
+            --dark: #121826;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--secondary), #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+
+        /* Détails produit */
+        .product-detail-section {
+            padding: 3rem 0;
+        }
+
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .main-product-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .product-category {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-description-full {
+            color: var(--dark);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+        }
+
+        .product-features h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .features-list i {
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+
+        /* Boutons d'action */
+        .product-actions-detail {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-order-btn {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 18px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .whatsapp-order-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .instagram-btn {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #405DE6, #E1306C, #FD1D1D);
+            color: white;
+            padding: 18px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(224, 36, 94, 0.3);
+        }
+
+        /* Bandeau de retour */
+        .back-to-products {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            background-color: white;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .back-to-products:hover {
+            color: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        /* Info de commande */
+        .order-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .order-info p {
+            margin: 0;
+            color: var(--dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .footer-links p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-actions-detail {
+                flex-direction: column;
+            }
+            
+            .product-title {
+                font-size: 2rem;
+            }
+            
+            .product-price {
+                font-size: 1.8rem;
+            }
+            
+            .product-info {
+                padding: 1.5rem;
+            }
+            
+            .main-product-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .product-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>AGLUX BOUTIQUE</h1>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#produits">Produits</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Détails Produit -->
+    <section class="product-detail-section">
+        <div class="container">
+            <a href="index.html#produits" class="back-to-products">
+                <i class="fas fa-arrow-left"></i> Retour aux produits
+            </a>
+            
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-product-image" id="mainImage">
+                        <img id="productImage" src="" alt="Produit">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <span class="product-category" id="productCategory">Chargement...</span>
+                    <h1 class="product-title" id="productTitle">Chargement...</h1>
+                    <div class="product-price" id="productPrice">Chargement...</div>
+                    
+                    <p class="product-description-full" id="productDescription">
+                        Chargement de la description...
+                    </p>
+                    
+                    <div class="product-features">
+                        <h3>Caractéristiques :</h3>
+                        <ul class="features-list" id="productFeatures">
+                            <!-- Les caractéristiques seront insérées ici -->
+                        </ul>
+                    </div>
+                    
+                    <div class="product-actions-detail">
+                        <a href="#" target="_blank" class="whatsapp-order-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/aglux_boutique?igsh=MmNzanIzOWFwa3hm&utm_source=qr" target="_blank" class="instagram-btn">
+                            <i class="fab fa-instagram"></i> Contacter sur Instagram
+                        </a>
+                    </div>
+                    
+                    <div class="order-info">
+                        <p>
+                            <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                            Pour commander ce produit, contactez-nous directement via WhatsApp ou Instagram. 
+                            Notre équipe vous répondra sous 24h maximum avec toutes les informations nécessaires.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>AGLUX BOUTIQUE</h3>
+                    <p>Votre partenaire fitness pour des performances optimales et un confort incomparable.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Rapide</h4>
+                    <p>
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                        <a href="https://wa.me/221784235482" target="_blank">+221 78 423 54 82</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-instagram" style="color: #E1306C;"></i>
+                        <a href="https://www.instagram.com/aglux_boutique?igsh=MmNzanIzOWFwa3hm&utm_source=qr" target="_blank">@aglux_boutique</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                        <a href="https://www.facebook.com/share/1BGSVRJJRR/?mibextid=wwXIfr" target="_blank">AGLUX BOUTIQUE</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-tiktok" style="color: #000000;"></i>
+                        <a href="https://www.tiktok.com/@aglux_boutique?_t=8sOx7RUoUxK&_r=1" target="_blank">@aglux_boutique</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 AGLUX BOUTIQUE. Tous droits réservés. | Conçu avec passion pour votre fitness</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DONNÉES COMPLÈTES DES 16 PRODUITS
+        const produits = {
+            1: {
+                nom: "Bande élastique",
+                categorie: "Élastiques",
+                prix: "12.99€",
+                image: "/1.jpg",
+                description: "Bande élastique de haute qualité pour vos exercices de résistance et d'étirement. Matériau durable en latex naturel avec différents niveaux de tension adaptés à tous les niveaux, du débutant au confirmé. Parfaite pour la rééducation, le renforcement musculaire et l'amélioration de la flexibilité.",
+                caracteristiques: [
+                    "5 niveaux de résistance différents",
+                    "Matériau latex naturel durable",
+                    "Longueur : 150 cm",
+                    "Largeur : 15 cm",
+                    "Sans latex (option disponible)",
+                    "Idéal pour étirements et musculation",
+                    "Poids léger et portable",
+                    "Couleurs selon le niveau de résistance"
+                ]
+            },
+            2: {
+                nom: "Pédales de traction",
+                categorie: "Fitness",
+                prix: "24.99€",
+                image: "/2.jpg",
+                description: "Pédales de traction professionnelles pour vos séances de musculation à domicile. Installation facile sur toutes les portes standards, prise en main optimale pour un entraînement efficace et sécurisé. Système anti-dérapant pour une sécurité maximale.",
+                caracteristiques: [
+                    "Installation facile sur porte",
+                    "Poignées ergonomiques antidérapantes",
+                    "Support jusqu'à 150 kg",
+                    "Système de fixation sécurisé",
+                    "Réglable en hauteur",
+                    "Idéal pour tractions et exercices bras",
+                    "Matériau nylon renforcé",
+                    "Compact et facile à ranger"
+                ]
+            },
+            3: {
+                nom: "Corde à sauter",
+                categorie: "Fitness",
+                prix: "14.99€",
+                image: "/3.jpg",
+                description: "Corde à sauter professionnelle pour un cardio intense et efficace. Poignées ergonomiques en mousse mémoire pour un confort optimal, câble réglable en acier gainé pour une durabilité exceptionnelle. Parfaite pour brûler des calories et améliorer votre condition physique.",
+                caracteristiques: [
+                    "Poignées ergonomiques en mousse mémoire",
+                    "Câble en acier gainé",
+                    "Longueur réglable (2m - 3m)",
+                    "Roulements à billes fluides",
+                    "Compteur intégré (option)",
+                    "Poids : 450g",
+                    "Idéale pour cardio et coordination",
+                    "Couleur noire professionnelle"
+                ]
+            },
+            4: {
+                nom: "Hand Grip",
+                categorie: "Accessoires",
+                prix: "9.99€",
+                image: "/4.jpg",
+                description: "Hand Grip de qualité pour renforcer votre prise et vos avant-bras. Résistance ajustable progressive permettant de suivre votre évolution. Confort optimal avec poignées texturées antidérapantes.",
+                caracteristiques: [
+                    "Résistance ajustable : 10-40 kg",
+                    "Poignées texturées antidérapantes",
+                    "Système à ressort chromé",
+                    "Compact et portable",
+                    "Idéal pour rééducation",
+                    "Améliore la force de préhension",
+                    "Matériau ABS durable",
+                    "Couleur noire/rouge"
+                ]
+            },
+            5: {
+                nom: "Hand Grip Premium",
+                categorie: "Accessoires",
+                prix: "15.99€",
+                image: "/5.jpg",
+                description: "Version premium du Hand Grip avec résistance réglable de précision. Confort maximal garanti par des poignées en gel respirant et durabilité exceptionnelle grâce à des matériaux haute qualité.",
+                caracteristiques: [
+                    "Résistance réglable précise : 5-60 kg",
+                    "Poignées en gel respirant",
+                    "Affichage numérique (option)",
+                    "Compteur de répétitions",
+                    "Confort optimal même lors de longues sessions",
+                    "Matériaux premium",
+                    "Garantie 2 ans",
+                    "Étui de transport inclus"
+                ]
+            },
+            6: {
+                nom: "Shaker",
+                categorie: "Accessoires",
+                prix: "7.99€",
+                image: "/6.jpg",
+                description: "Shaker pratique pour mélanger vos suppléments facilement et rapidement. Capacité 700ml, étanche et facile à nettoyer. Design ergonomique avec compartiment pour poudre intégré.",
+                caracteristiques: [
+                    "Capacité : 700ml",
+                    "Compartiment à poudre intégré",
+                    "Joint étanche anti-fuites",
+                    "Facile à nettoyer (sans BPA)",
+                    "Graduations internes",
+                    "Design ergonomique",
+                    "Couleurs disponibles",
+                    "Lavable au lave-vaisselle"
+                ]
+            },
+            7: {
+                nom: "Tapis de sport",
+                categorie: "Fitness",
+                prix: "22.99€",
+                image: "/7.jpg",
+                description: "Tapis de sport premium offrant confort et protection pour vos exercices au sol. Matériau antidérapant double densité, épaisseur 10mm pour une absorption optimale des chocs. Surface facile à nettoyer.",
+                caracteristiques: [
+                    "Épaisseur : 10mm double densité",
+                    "Matériau antidérapant PVC",
+                    "Dimensions : 183 x 61 cm",
+                    "Facile à nettoyer",
+                    "Roulable pour rangement",
+                    "Surface texturée",
+                    "Poids : 1.8kg",
+                    "Couleur bleu/gris"
+                ]
+            },
+            8: {
+                nom: "Tapis + Elastique",
+                categorie: "Fitness",
+                prix: "29.99€",
+                image: "/8.jpg",
+                description: "Kit complet pour vos séances à domicile incluant tapis premium et 3 bandes élastiques de résistance différente. Solution tout-en-un pour un entraînement complet du corps.",
+                caracteristiques: [
+                    "Tapis 10mm antidérapant",
+                    "3 bandes élastiques (léger, moyen, fort)",
+                    "Guide d'exercices inclus",
+                    "Sangle de transport",
+                    "Pochette de rangement",
+                    "Idéal pour débutants",
+                    "Poids total : 2.5kg",
+                    "Kit complet valeur exceptionnelle"
+                ]
+            },
+            9: {
+                nom: "Ballon de gym",
+                categorie: "Fitness",
+                prix: "18.99€",
+                image: "/9.jpg",
+                description: "Ballon de gym professionnel pour améliorer votre équilibre et tonifier vos muscles. Taille 65cm adaptée à la plupart des adultes, support de gonflage inclus. Antidérapant et anti-éclatement.",
+                caracteristiques: [
+                    "Diamètre : 65cm (taille standard)",
+                    "Support de gonflage inclus",
+                    "Matériau PVC anti-éclatement",
+                    "Charge max : 300kg",
+                    "Surface antidérapante",
+                    "Couleur bleu fitness",
+                    "Pompe manuelle optionnelle",
+                    "Idéal pour abdos, équilibre, yoga"
+                ]
+            },
+            10: {
+                nom: "Genouillère",
+                categorie: "Protection",
+                prix: "16.99€",
+                image: "/10.jpg",
+                description: "Genouillère de protection optimale pour vos articulations lors d'exercices intenses. Matériau néoprène respirant avec maintien latéral renforcé. Confortable même lors de longues sessions.",
+                caracteristiques: [
+                    "Matériau néoprène respirant",
+                    "Maintien latéral renforcé",
+                    "Taille unique ajustable",
+                    "Fermeture Velcro sécurisée",
+                    "Antidérapant",
+                    "Lavable en machine",
+                    "Couleur noire",
+                    "Paire disponible"
+                ]
+            },
+            11: {
+                nom: "Bande de squat",
+                categorie: "Élastiques",
+                prix: "11.99€",
+                image: "/11.jpg",
+                description: "Bande de squat en latex naturel pour ajouter de la résistance à vos exercices de bas du corps. Niveaux de résistance progressifs marqués par des couleurs. Parfaite pour squats, fessiers, hanches.",
+                caracteristiques: [
+                    "3 niveaux de résistance",
+                    "Couleurs selon résistance",
+                    "Longueur : 50cm (boucle)",
+                    "Largeur : 15cm",
+                    "Sans latex disponible",
+                    "Guide d'exercices inclus",
+                    "Portable et léger",
+                    "Idéal pour fessiers et cuisses"
+                ]
+            },
+            12: {
+                nom: "Genouillère Pro",
+                categorie: "Protection",
+                prix: "21.99€",
+                image: "/12.jpg",
+                description: "Genouillère professionnelle pour performances maximales avec stabilité renforcée et confort optimal. Design anatomique avec supports latéraux intégrés pour une protection articulaire supérieure.",
+                caracteristiques: [
+                    "Design anatomique",
+                    "Supports latéraux intégrés",
+                    "Matériau néoprène 5mm",
+                    "Ouverture rotulienne",
+                    "Taille S, M, L, XL",
+                    "Certifié qualité sport",
+                    "Couleur noire/bleu",
+                    "Garantie 1 an"
+                ]
+            },
+            13: {
+                nom: "Hand Grip Fort",
+                categorie: "Accessoires",
+                prix: "12.99€",
+                image: "/13.jpg",
+                description: "Hand Grip haute résistance pour un entraînement intensif des avant-bras et de la prise. Poignées ergonomiques en mousse mémoire pour un confort optimal même à forte résistance.",
+                caracteristiques: [
+                    "Résistance élevée : 20-50 kg",
+                    "Poignées en mousse mémoire",
+                    "Ressort chromé renforcé",
+                    "Indicateur de force",
+                    "Pour utilisateurs avancés",
+                    "Compact et portable",
+                    "Couleur noire/orange",
+                    "Améliore la force rapidement"
+                ]
+            },
+            14: {
+                nom: "Élastique de résistance",
+                categorie: "Élastiques",
+                prix: "13.99€",
+                image: "/14.jpg",
+                description: "Set de 5 élastiques de résistance pour des exercices de musculation variés du corps entier. Niveaux de résistance progressifs adaptés à tous les niveaux d'entraînement.",
+                caracteristiques: [
+                    "Set de 5 élastiques",
+                    "5 niveaux de résistance",
+                    "Longueur : 120cm chacun",
+                    "Poignées amovibles",
+                    "Ancrage porte inclus",
+                    "Guide d'exercices complet",
+                    "Sac de transport",
+                    "Couleurs vives selon résistance"
+                ]
+            },
+            15: {
+                nom: "Hand Grip Double",
+                categorie: "Accessoires",
+                prix: "17.99€",
+                image: "/15.jpg",
+                description: "Hand Grip double fonction pour un entraînement complet de la main. Renforce à la fois la prise globale et chaque doigt individuellement. Système innovant pour un développement harmonieux.",
+                caracteristiques: [
+                    "Double fonction : prise + doigts",
+                    "5 ressorts individuels",
+                    "Réglage indépendant par doigt",
+                    "Poignées ergonomiques",
+                    "Pour rééducation avancée",
+                    "Matériaux premium",
+                    "Étui rigide inclus",
+                    "Guide d'utilisation détaillé"
+                ]
+            },
+            16: {
+                nom: "Genouillère Confort",
+                categorie: "Protection",
+                prix: "19.99€",
+                image: "/16.jpg",
+                description: "Genouillère confort maximal avec maintien professionnel. Design anatomique avancé et matériaux haute qualité pour un soutien optimal sans compromis sur le confort. Idéale pour sports intensifs.",
+                caracteristiques: [
+                    "Design anatomique avancé",
+                    "Gel de confort rotulien",
+                    "Matériau 3D mesh respirant",
+                    "Stabilisateurs croisés",
+                    "Taille selon tour de genou",
+                    "Couleur noire/grise",
+                    "Lavable en machine",
+                    "Garantie 18 mois"
+                ]
+            }
+        };
+
+        // Fonction pour créer un message WhatsApp professionnel
+        function createWhatsAppMessage(produit) {
+            const message = `🌟 **DEMANDE D'INFORMATION - AGLUX BOUTIQUE** 🌟
+
+Bonjour AGLUX BOUTIQUE 👋,
+
+Je suis intéressé(e) par le produit suivant :
+
+**📦 PRODUIT :** ${produit.nom}
+**💰 PRIX :** ${produit.prix}
+**🏷️ CATÉGORIE :** ${produit.categorie}
+
+**❓ MES QUESTIONS :**
+1. Ce produit est-il disponible en stock ?
+2. Quel est le délai de livraison estimé ?
+3. Quelles méthodes de paiement acceptez-vous ?
+4. Proposez-vous une garantie sur ce produit ?
+5. Avez-vous des conseils d'utilisation spécifiques ?
+
+Je reste à votre disposition pour toute information complémentaire.
+
+En vous remerciant par avance,
+[Prénom Nom]`;
+
+            return encodeURIComponent(message);
+        }
+
+        // Fonction pour initialiser la page produit
+        function initProductPage() {
+            // Récupérer l'ID du produit depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id')) || 1;
+            
+            // Récupérer le produit correspondant
+            const produit = produits[productId];
+            
+            if (!produit) {
+                // Si produit non trouvé, rediriger vers l'accueil
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Mettre à jour les éléments de la page
+            document.title = `AGLUX BOUTIQUE | ${produit.nom}`;
+            document.getElementById('productTitle').textContent = produit.nom;
+            document.getElementById('productCategory').textContent = produit.categorie;
+            document.getElementById('productPrice').textContent = produit.prix;
+            document.getElementById('productDescription').textContent = produit.description;
+            
+            // Mettre à jour l'image
+            const productImage = document.getElementById('productImage');
+            productImage.src = produit.image;
+            productImage.alt = produit.nom;
+            productImage.onerror = function() {
+                this.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+            };
+            
+            // Mettre à jour les caractéristiques
+            const featuresList = document.getElementById('productFeatures');
+            featuresList.innerHTML = '';
+            produit.caracteristiques.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+                featuresList.appendChild(li);
+            });
+            
+            // Mettre à jour le lien WhatsApp
+            const whatsappMessage = createWhatsAppMessage(produit);
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            whatsappBtn.href = `https://wa.me/221784235482?text=${whatsappMessage}`;
+            
+            // Ajouter l'ID du produit dans le message Instagram (méta données)
+            const instagramBtn = document.querySelector('.instagram-btn');
+            instagramBtn.addEventListener('click', function(e) {
+                // On peut aussi pré-remplir un message pour Instagram
+                // Mais Instagram n'a pas de pré-remplissage facile
+                // On laisse juste le lien standard
+            });
+        }
+
+        // Initialiser la page au chargement
+        document.addEventListener('DOMContentLoaded', initProductPage);
+    </script>
+</body>
+</html>

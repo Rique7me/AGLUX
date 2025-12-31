@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGLUX BOUTIQUE | Matériel Sportif & Fitness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary: #1a1f2e;
+            --secondary: #f8a01d;
+            --accent: #3a86ff;
+            --light: #f5f7fa;
+            --dark: #121826;
+            --gray: #6c757d;
+            --success: #28a745;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--secondary), #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        /* Navigation principale */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+
+        nav a.active {
+            color: var(--secondary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Bouton retour en haut */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: #ffcc00;
+            transform: translateY(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 31, 46, 0.85), rgba(26, 31, 46, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-bottom: 3rem;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #ddd;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), #ffcc00);
+            color: var(--primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(248, 160, 29, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(248, 160, 29, 0.4);
+        }
+
+        /* Bandeau de commande */
+        .order-banner {
+            background: linear-gradient(135deg, var(--secondary), #ffcc00);
+            color: var(--primary);
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 2rem auto 3rem;
+            max-width: 1000px;
+            box-shadow: var(--shadow);
+        }
+
+        .order-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .order-banner p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .order-banner .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+
+        .order-banner .whatsapp-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Boutons de catégories */
+        .categories-section {
+            padding: 4rem 0 2rem;
+            background-color: white;
+            border-radius: var(--radius);
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .categories-section .section-title h2 {
+            color: var(--primary);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--light);
+            border-radius: var(--radius);
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Boutons filtres produits */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 2px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .contact-product {
+            flex: 1;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-product:hover {
+            background-color: var(--accent);
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 5rem 0;
+            margin: 5rem 0;
+            border-radius: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+            color: var(--accent);
+        }
+
+        .contact-link i {
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .footer-links h4, .footer-newsletter h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--radius) 0 0 var(--radius);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .newsletter-form button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #ffcc00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                position: relative;
+            }
+            
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                padding: 20px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .main-nav.active {
+                max-height: 500px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .order-banner h3 {
+                font-size: 1.3rem;
+            }
+            
+            .order-banner p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-banner {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>AGLUX BOUTIQUE</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="main-nav" id="mainNav">
+                <nav>
+                    <ul>
+                        <li><a href="#accueil" class="active">Accueil</a></li>
+                        <li><a href="#categories">Catégories</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bouton retour en haut -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>VOTRE DESTINATION FITNESS</h1>
+            <p>Matériel de qualité pour optimiser vos performances sportives à court et long terme. Confort, satisfaction et résultats garantis.</p>
+            <a href="#produits" class="cta-button">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Bandeau de commande -->
+    <div class="container">
+        <div class="order-banner">
+            <h3><i class="fas fa-shopping-cart"></i> Comment commander ?</h3>
+            <p>Pour commander, contactez-nous directement via nos réseaux sociaux ou WhatsApp.</p>
+            <a href="https://wa.me/221784235482?text=Bonjour%20AGLUX%20BOUTIQUE%2C%20je%20suis%20intéressé(e)%20par%20vos%20produits%20fitness.%20Pouvez-vous%20me%20renseigner%20%3F" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Section Catégories -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Catégories</h2>
+            </div>
+            <p class="section-subtitle">Explorez nos différentes catégories de matériel sportif pour trouver l'équipement parfait pour vos besoins.</p>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="fitness">
+                    <i class="fas fa-running"></i>
+                    <h3>Fitness</h3>
+                    <p>Équipements pour l'entraînement cardio et musculaire</p>
+                </div>
+                
+                <div class="category-card" data-category="protection">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Protection</h3>
+                    <p>Genouillières et équipements de sécurité</p>
+                </div>
+                
+                <div class="category-card" data-category="accessoires">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Accessoires</h3>
+                    <p>Petits équipements pour compléter votre routine</p>
+                </div>
+                
+                <div class="category-card" data-category="elastiques">
+                    <i class="fas fa-expand-alt"></i>
+                    <h3>Élastiques</h3>
+                    <p>Bandes de résistance pour un entraînement varié</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produits" class="container">
+        <div class="section-title">
+            <h2>Nos Produits</h2>
+        </div>
+        
+        <p class="section-subtitle">
+            Nous vous proposons une gamme variée d'articles et de matériels sportifs capable d'améliorer et d'optimiser efficacement vos exercices physiques à long et à court terme, tout en vous procurant confort et satisfaction.
+        </p>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="fitness">Fitness</button>
+            <button class="filter-btn" data-filter="protection">Protection</button>
+            <button class="filter-btn" data-filter="accessoires">Accessoires</button>
+            <button class="filter-btn" data-filter="elastiques">Élastiques</button>
+        </div>
+        
+        <div class="products-grid" id="productsContainer">
+            <!-- Les produits seront insérés ici dynamiquement -->
+        </div>
+        
+        <!-- Message de commande sous les produits -->
+        <div class="order-banner" style="margin-top: 2rem;">
+            <h3><i class="fas fa-info-circle"></i> Intéressé par un produit ?</h3>
+            <p>Contactez-nous via WhatsApp, Instagram ou Facebook pour passer commande ou obtenir plus d'informations.</p>
+            <a href="#contact" class="whatsapp-btn">
+                <i class="fas fa-arrow-down"></i> Voir nos contacts
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Pourquoi Nous Choisir</h2>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Livraison Rapide</h3>
+                    <p>Expédition sous 24h pour toute commande passée avant 16h.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <h3>Qualité Premium</h3>
+                    <p>Matériaux durables et produits testés pour une performance optimale.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support 7j/7</h3>
+                    <p>Notre équipe est disponible pour répondre à toutes vos questions.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Transactions 100% sécurisées avec cryptage de données.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <p>Pour commander ou pour toute question, contactez-nous via nos réseaux sociaux ou WhatsApp. Notre équipe est à votre disposition pour vous conseiller.</p>
+                
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/aglux_boutique?igsh=MmNzanIzOWFwa3hm&utm_source=qr" target="_blank" class="contact-link">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    
+                    <a href="https://www.facebook.com/share/1BGSVRJJRR/?mibextid=wwXIfr" target="_blank" class="contact-link">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    
+                    <a href="https://wa.me/221784235482?text=Bonjour%20AGLUX%20BOUTIQUE%2C%20je%20suis%20intéressé(e)%20par%20vos%20produits%20fitness.%20Pouvez-vous%20me%20renseigner%20%3F" target="_blank" class="contact-link">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    
+                    <a href="https://www.tiktok.com/@aglux_boutique?_t=8sOx7RUoUxK&_r=1" target="_blank" class="contact-link">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-image">
+                <!-- Image illustrative pour la section contact -->
+                <div style="background: linear-gradient(45deg, var(--primary), var(--accent)); height: 300px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-comments" style="font-size: 6rem; color: rgba(255,255,255,0.2);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>AGLUX BOUTIQUE</h3>
+                    <p>Votre partenaire fitness pour des performances optimales et un confort incomparable.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#categories">Catégories</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Inscrivez-vous pour recevoir nos offres exclusives et conseils fitness.</p>
+                    
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 AGLUX BOUTIQUE. Tous droits réservés. | Conçu avec passion pour votre fitness</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Données des produits
+        const products = [
+            { id: 1, name: "Bande élastique", category: "elastiques", price: "12.99€", image: "/1.jpg", description: "Idéale pour les étirements et exercices de résistance. Matériau durable avec différents niveaux de tension." },
+            { id: 2, name: "Pédales de traction", category: "fitness", price: "24.99€", image: "/2.jpg", description: "Pour des séances de traction complètes à domicile. Installation facile et prise en main optimale." },
+            { id: 3, name: "Corde à sauter", category: "fitness", price: "14.99€", image: "/3.jpg", description: "Cardio intense avec corde à sauter professionnelle. Poignées ergonomiques et câble réglable." },
+            { id: 4, name: "Hand Grip", category: "accessoires", price: "9.99€", image: "/4.jpg", description: "Renforcez votre prise et vos avant-bras. Résistance ajustable pour tous les niveaux." },
+            { id: 5, name: "Hand Grip Premium", category: "accessoires", price: "15.99€", image: "/5.jpg", description: "Version premium avec résistance réglable. Confort maximal et durabilité garantie." },
+            { id: 6, name: "Shaker", category: "accessoires", price: "7.99€", image: "/6.jpg", description: "Mélangez vos suppléments facilement. Capacité 700ml, étanche et facile à nettoyer." },
+            { id: 7, name: "Tapis de sport", category: "fitness", price: "22.99€", image: "/7.jpg", description: "Confort et protection pour vos exercices au sol. Matériau antidérapant, épaisseur 10mm." },
+            { id: 8, name: "Tapis + Elastique", category: "fitness", price: "29.99€", image: "/8.jpg", description: "Kit complet pour vos séances à domicile. Inclut tapis premium et 3 bandes élastiques." },
+            { id: 9, name: "Ballon de gym", category: "fitness", price: "18.99€", image: "/9.jpg", description: "Améliorez votre équilibre et tonifiez vos muscles. Taille 65cm, support inclus." },
+            { id: 10, name: "Genouillère", category: "protection", price: "16.99€", image: "/10.jpg", description: "Protection optimale pour vos articulations. Matériau respirant avec maintien latéral." },
+            { id: 11, name: "Bande de squat", category: "elastiques", price: "11.99€", image: "/11.jpg", description: "Ajoutez de la résistance à vos squats. Niveaux de résistance progressifs." },
+            { id: 12, name: "Genouillère Pro", category: "protection", price: "21.99€", image: "/12.jpg", description: "Genouillère professionnelle pour performances maximales. Stabilité renforcée et confort optimal." },
+            { id: 13, name: "Hand Grip Fort", category: "accessoires", price: "12.99€", image: "/13.jpg", description: "Résistance élevée pour un entraînement intensif. Poignées ergonomiques en mousse mémoire." },
+            { id: 14, name: "Élastique de résistance", category: "elastiques", price: "13.99€", image: "/14.jpg", description: "Pour des exercices de musculation variés. 5 niveaux de résistance différents." },
+            { id: 15, name: "Hand Grip Double", category: "accessoires", price: "17.99€", image: "/15.jpg", description: "Double fonction pour un entraînement complet. Renforce à la fois la prise et les doigts." },
+            { id: 16, name: "Genouillère Confort", category: "protection", price: "19.99€", image: "/16.jpg", description: "Confort maximal avec maintien professionnel. Design anatomique et matériaux haute qualité." }
+        ];
+
+        // Éléments DOM
+        const productsContainer = document.getElementById('productsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const backToTop = document.getElementById('backToTop');
+
+        // Fonction pour créer un message WhatsApp pré-rempli
+        function createWhatsAppMessage(productName, productPrice) {
+            const message = `Bonjour AGLUX BOUTIQUE 👋
+
+Je suis intéressé(e) par votre produit :
+🔸 **${productName}** (${productPrice})
+
+Pourriez-vous m'en dire plus sur :
+• La disponibilité
+• Les délais de livraison
+• Les options de paiement
+
+Merci d'avance pour votre réponse !`;
+            
+            return encodeURIComponent(message);
+        }
+
+        // Fonction pour afficher les produits
+        function displayProducts(filter = 'all') {
+            productsContainer.innerHTML = '';
+            
+            const filteredProducts = filter === 'all' 
+                ? products 
+                : products.filter(product => product.category === filter);
+            
+            filteredProducts.forEach(product => {
+                const whatsappMessage = createWhatsAppMessage(product.name, product.price);
+                const whatsappLink = `https://wa.me/221784235482?text=${whatsappMessage}`;
+                
+                const productCard = document.createElement('a');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-category', product.category);
+                productCard.href = `produit.html?id=${product.id}`;
+                
+                productCard.innerHTML = `
+                    ${product.id % 4 === 0 ? '<span class="product-badge">Nouveau</span>' : ''}
+                    ${product.id % 5 === 0 ? '<span class="product-badge">Promo</span>' : ''}
+                    
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <p class="product-description">${product.description}</p>
+                        
+                        <div class="product-actions">
+                            <a href="${whatsappLink}" target="_blank" class="contact-product" onclick="event.stopPropagation();">
+                                <i class="fab fa-whatsapp"></i> Demander ce produit
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // Filtrage des produits
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Ajouter la classe active au bouton cliqué
+                this.classList.add('active');
+                
+                // Filtrer les produits
+                const filter = this.getAttribute('data-filter');
+                displayProducts(filter);
+            });
+        });
+
+        // Catégories cliquables
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Mettre à jour les boutons de filtre
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`.filter-btn[data-filter="${category}"]`).classList.add('active');
+                
+                // Filtrer les produits
+                displayProducts(category);
+                
+                // Faire défiler jusqu'aux produits
+                document.getElementById('produits').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Menu mobile
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Bouton retour en haut
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialiser l'affichage des produits
+        displayProducts();
+    </script>
+</body>
+</html>
